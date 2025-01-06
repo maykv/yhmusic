@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝났다는 것은 다시 시작된다는 것을 - Y.H Sound</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        @font-face {
+            font-family: 'HakgyoansimByeolbichhaneulTTF-B';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-B.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'HakgyoansimByeolbichhaneulTTF-B';
+            font-size: 2rem;
+            background: linear-gradient(135deg, #23F4F9, #3D00B8);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: auto;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #23F4F9;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1bc2c6;
+        }
+
+        .work-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .work-header {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .work-cover {
+            flex: 0 0 640px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .work-cover:hover {
+            transform: scale(1.02);
+        }
+
+        .work-cover img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .work-info {
+            flex: 1;
+        }
+
+        .work-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .work-meta {
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .member-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .member-link {
+            color: #23F4F9;
+            text-decoration: none;
+            padding: 5px 15px;
+            border: 1px solid #23F4F9;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .member-link:hover {
+            transform: scale(1.05);
+            background: #23F4F9;
+            color: white;
+        }
+
+        .work-content {
+            margin-top: 50px;
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: linear-gradient(135deg, #23F4F9, #3D00B8);
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section-content {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 20px 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .links-section {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .external-link {
+            color: #666;
+            text-decoration: none;
+            transition: transform 0.3s;
+            font-size: 2rem;
+        }
+
+        .external-link:hover {
+            transform: scale(1.2);
+            color: #23F4F9;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 900px) {
+            .work-header {
+                flex-direction: column;
+            }
+
+            .work-cover {
+                flex: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="logo">Y.H Music</a>
+        <a href="../index.html#home">HOME</a>
+        <a href="../index.html#team">TEAM</a>
+        <a href="../index.html#works">WORKS</a>
+        <a href="../index.html#contact">CONTACT</a>
+    </nav>
+
+    <div class="work-container">
+        <div class="work-header">
+            <div class="work-cover">
+                <img src="../images/artwork/7.jpg" alt="끝났다는 것은 다시 시작된다는 것을 Cover Art">
+            </div>
+            <div class="work-info">
+                <h1 class="work-title">끝났다는 것은 다시 시작된다는 것을</h1>
+                <div class="work-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">커버곡 종류</span>
+                        <span>Full Cover</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">참여 인원</span>
+                        <div class="member-links">
+                            <a href="../member/kyh0108.html" class="member-link">김영환</a>
+                            <a href="../member/maykv.html" class="member-link">김메이</a>
+                            <a href="../member/sq.html" class="member-link">S.Q</a>
+                        </div>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">원곡</span>
+                        <span>끝났다는 것은 다시 시작된다는 것을 - Warak</span><br>
+                        <small>게임 〈산나비〉 OST</small>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">발매일</span>
+                        <span>2025.01.01.</span>
+                    </div>
+                </div>
+                <div class="links-section">
+                    <a href="https://www.youtube.com/watch?v=eTw_KhlsKgY" class="external-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="work-content">
+            <div class="content-section">
+                <h2 class="section-title">코멘트</h2>
+                <div class="section-content">
+                    작년의 끝이자 올해의 시작이 찾아왔습니다. 다들 happy new year!
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">제작자 코멘트</h2>
+                <div class="section-content">
+                    <p><strong>김메이:</strong><br>
+                    이걸 이렇게 쓰네 싶어서 감탄스럽네요. 솔직히 영환이 저랑 작업할 때는 영 별로더니 여기서는 잘되니까 뭔가 조금 약오릅니다.<br>
+                    사랑하는 청취자 여러분 모두 행복하고 멋진 2025년 되세요!</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2 class="section-title">뮤직비디오</h2>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/eTw_KhlsKgY"  frameborder="0"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal">
+        <div class="modal-content">
+            <img src="../images/artwork/7.jpg" alt="끝났다는 것은 다시 시작된다는 것을 Cover Art">
+        </div>
+        <div class="close-modal">&times;</div>
+    </div>
+
+    <script>
+        // Image Modal
+        const cover = document.querySelector('.work-cover');
+        const modal = document.querySelector('.modal');
+        const closeBtn = document.querySelector('.close-modal');
+
+        cover.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
