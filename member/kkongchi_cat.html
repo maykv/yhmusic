@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y.H Sound - 김꽁치</title>
+    <script src="https://kit.fontawesome.com/62ebb0b0b9.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="./images/favicon.ico">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        @font-face {
+            font-family: 'HakgyoansimByeolbichhaneulTTF-L';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-L.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'HakgyoansimByeolbichhaneulTTF-B';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-B.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            min-height: 100vh;
+            padding-top: 80px; /* nav 높이만큼 패딩 추가 */
+        }
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'HakgyoansimByeolbichhaneulTTF-B';
+            font-size: 2rem;
+            background: linear-gradient(135deg, #23F4F9, #3D00B8);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: auto;
+        }
+
+        nav a {
+            color: #3D00B8;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4c2f82;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .profile-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-header .info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .profile-header .role {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .sns-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .sns-links a {
+            color: #3D00B8;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .sns-links a:hover {
+            color: #4c2f82;
+        }
+
+        .profile-content {
+            margin-top: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .works-section {
+            margin-top: 2rem;
+        }
+
+        .works-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .work-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .work-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .work-card h3 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .work-card p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #3D00B8;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #4c2f82;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Y.H Music</div>
+        <a href="index.html#home">HOME</a>
+        <a href="index.html#team">TEAM</a>
+        <a href="index.html#works">WORKS</a>
+        <a href="index.html#contact">CONTACT</a>
+    </nav>
+
+    <section class="profile-section">
+        <div class="profile-header">
+            <img src="../images/profile/kkongchi_cat.png" alt="김영환">
+            <div class="info">
+                <h1>김꽁치</h1>
+                <div class="role">디자인</div>
+                <div class="sns-links">
+                    <a href="https://www.youtube.com/channel/UCvn1X_2YpM0k8geNru0Ny0Q" target="_blank" title="LinkedIn">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://x.com/kkon9ch1" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <section class="works-section">
+            <h2>참여 작품</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <h3>17さいのうた。</h3>
+                    <p>2024.12.15.</p>
+                </div>
+            </div>
+        </section>
+
+        <a href="../index.html#team" class="back-link">← 팀 페이지로 돌아가기</a>
+    </section>
+</body>
+</html>
